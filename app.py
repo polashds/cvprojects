@@ -2,6 +2,7 @@ import io
 from flask import Flask, render_template, request, send_file
 from PIL import Image
 from face_recognition import add_labels_to_image
+from waitress import serve
 
 app = Flask(__name__)
 
@@ -53,4 +54,4 @@ def matplotlib_to_bytes(figure):
     return buffer
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    serve(app, port=5000, host="0.0.0.0")
